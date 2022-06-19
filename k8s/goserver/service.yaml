@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goserver-service # Nome do recurso service
+spec:
+  type: LoadBalancer # Tipo do recurso
+  selector:
+    app: goserver # Noma da TAG de busca do Deployment
+  ports:
+    - port: 80 # Porta do service
+      targetPort: 9090 # Porta do container

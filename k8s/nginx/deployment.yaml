@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment # Qual é o tipo do recurso que irá ser criado
+metadata: # Definições do recurso
+  name: nginx # Nome do recurso
+spec:
+  replicas: 10 # Define o número de replicas de PODs, por padrão é 1
+  selector:
+    matchLabels: # Irá buscar todos os PODs que tenham a LABEL nginx
+      app: nginx # Atribuindo uma nova LABEL ao recurso do ReplicaSet
+  template:
+    metadata:
+      labels:
+        app: nginx # Atribuindo uma nova LABEL ao recurso do POD
+    spec:
+      containers: # Lista de containers
+        - name: nginx # Nome do container
+          image: nginx # Nome da imagem
+          ports: # Lista de portas
+            - containerPort: 80 # Porta do container
